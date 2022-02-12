@@ -1,4 +1,3 @@
-#if windows
 package;
 
 import flixel.system.FlxAssets.FlxShader;
@@ -332,4 +331,3 @@ class PulseShader extends FlxShader
        super();
     }
 }
-#end
