@@ -61,6 +61,8 @@ class OptionsState extends MusicBeatState
 		}
 		changeSelection();
 
+                addVirtualPad(UP_DOWN, A_B);
+
 		super.create();
 	}
 
