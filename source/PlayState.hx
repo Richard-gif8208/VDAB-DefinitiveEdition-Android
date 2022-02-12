@@ -1364,9 +1364,9 @@ class PlayState extends MusicBeatState
 
                 #if windows
 		screenshader.waveAmplitude = 1;
-        screenshader.waveFrequency = 2;
-        screenshader.waveSpeed = 1;
-        screenshader.shader.uTime.value[0] = new flixel.math.FlxRandom().float(-100000, 100000);
+                screenshader.waveFrequency = 2;
+                screenshader.waveSpeed = 1;
+                screenshader.shader.uTime.value[0] = new flixel.math.FlxRandom().float(-100000, 100000);
 		#end
 
 		var gfVersion:String = SONG.player3;
@@ -1437,12 +1437,12 @@ class PlayState extends MusicBeatState
 
 		var file:String = Paths.json(songName + '/dialogue'); //Checks for json/Psych Engine dialogue
 		if (OpenFlAssets.exists(file)) {
-			dialogueJson = DialogueBoxPsych.parseDialogue(file);
+			dialogueJson = DialogueBoxPsych.parseDialogue(SUtil.getPath() + file);
 		}
 
 		var file:String = Paths.txt(songName + '/' + songName + 'Dialogue'); //Checks for vanilla/Senpai dialogue
 		if (OpenFlAssets.exists(file)) {
-			dialogue = CoolUtil.coolTextFile(file);
+			dialogue = CoolUtil.coolTextFile(SUtil.getPath() + file);
 		}
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		// doof.x += 70;
@@ -2685,7 +2685,6 @@ class PlayState extends MusicBeatState
 	override public function update(elapsed:Float)
 	{
 	elapsedtime += elapsed;
-	#if windows
 	if (curbg != null)
 	{
 		if (curbg.active) // only the furiosity background is active
@@ -2694,7 +2693,7 @@ class PlayState extends MusicBeatState
 			shad.uTime.value[0] += elapsed;
 		}
 	}
-	#end
+
 	if(funnyFloatyBoys.contains(dad.curCharacter.toLowerCase()) && canFloat)
 	{
 		dad.y += (Math.sin(elapsedtime) * 0.6);
