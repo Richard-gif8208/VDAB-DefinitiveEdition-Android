@@ -26,14 +26,16 @@ class EndingState extends MusicBeatState
 		end.loadGraphic(Paths.image("dave/" + _ending));
 		FlxG.sound.playMusic(Paths.music(_song),1,true);
 		add(end);
-		FlxG.camera.fade(FlxColor.BLACK, 0.8, true);	
+		FlxG.camera.fade(FlxColor.BLACK, 0.8, true);
+
+                addVirtualPad(NONE, A);	
 	}
 	
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
 		
-		if (FlxG.keys.pressed.ENTER)
+		if (controls.ACCEPT)
 		{
 			endIt();
 		}
