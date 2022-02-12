@@ -191,6 +191,8 @@ class StoryMenuState extends MusicBeatState
 
 		changeWeek();
 
+                addVirtualPad(FULL, A_B_C);
+
 		super.create();
 	}
 
@@ -245,7 +247,7 @@ class StoryMenuState extends MusicBeatState
 			{
 				selectWeek();
 			}
-			else if(controls.RESET)
+			else if(controls.RESET#if android || _virtualpad.buttonC.justPressed #end)
 			{
 				persistentUpdate = false;
 				openSubState(new ResetScoreSubState('', curDifficulty, '', curWeek));
