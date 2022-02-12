@@ -125,7 +125,7 @@ class FreeplayState extends MusicBeatState
 					addWeek(['Old-Blocked', 'Old-Corn-Theft', 'beta-maze', 'Old-Maze'], 3, ['bamberfunny']);
 					addWeek(['Old-Splitathon'], 4, ['Splitathon']);
 			    case 'mods':
-					var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
+					var initSonglist = CoolUtil.coolTextFile(SUtil.getPath() + Paths.txt('freeplaySonglist'));
 
 					for (i in 0...initSonglist.length)
 					{
@@ -133,7 +133,7 @@ class FreeplayState extends MusicBeatState
 						songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 					}
 				case 'joke':
-                    addWeek(['Supernovae', 'Glitch', 'Vs-Dave-Thanksgiving', 'vs-dave-christmas'], 3, ['bambiJoke']);
+                                        addWeek(['Supernovae', 'Glitch', 'Vs-Dave-Thanksgiving', 'vs-dave-christmas'], 3, ['bambiJoke']);
 					addWeek(['Singlathon'], 1, ['dave']);
 					#if !debug
 					if (FlxG.save.data.cheatingFound)
@@ -383,7 +383,7 @@ class FreeplayState extends MusicBeatState
 		var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
 		var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
 		#if MODS_ALLOWED
-		if(!sys.FileSystem.exists(Paths.modsJson(songLowercase + '/' + poop)) && !sys.FileSystem.exists(Paths.json(songLowercase + '/' + poop))) {
+		if(!sys.FileSystem.exists(Paths.modsJson(songLowercase + '/' + poop)) && !sys.FileSystem.exists(SUtil.getPath() + Paths.json(songLowercase + '/' + poop))) {
 		#else
 		if(!OpenFlAssets.exists(Paths.json(songLowercase + '/' + poop))) {
 		#end
