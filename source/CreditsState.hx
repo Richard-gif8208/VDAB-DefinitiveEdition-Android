@@ -27,6 +27,8 @@ class CreditsState extends MusicBeatState
 		['Dave & Bambi Original Mod'],
 		['Check it out by pressing enter!',		    'daveandbamber',			'Support the Original Mod!',			                            'https://gamebanana.com/mods/43201',	    0xFF613BE0],
 		[''],
+                ['Android Port'],
+		['Saw (M.A. Jigsaw)','majigsaw','Main Coder','https://www.youtube.com/channel/UC2Sk7vtPzOvbVzdVTWrribQ','0xFFFF0000'],
 		['VDABDE + Purgatory Team'],
 		['WhatsDown',		    'whatsdown',			'Creator/Main Dev, Made most assets',			                            'https://www.youtube.com/channel/UCL3oNN5ss7sI8bHq8i9Unhg',	    0xFF613BE0],
 		['ztgds',		    'ztgds',			'Dev/Programmer & Made a few assets', 'https://www.youtube.com/channel/UCUmuZE0RPjvUhB036T6omfQ',	    0xFFFFA845],
