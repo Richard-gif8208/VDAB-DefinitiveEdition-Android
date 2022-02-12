@@ -25,6 +25,8 @@ class YouCheatedSomeoneIsComing extends MusicBeatState
         spooky.screenCenter();
         add(spooky);
 		FlxG.sound.playMusic(Paths.music('badEnding'),1,true);
+
+                addVirtualPad(NONE, A);
 	}
 	
 	override public function update(elapsed:Float):Void 
