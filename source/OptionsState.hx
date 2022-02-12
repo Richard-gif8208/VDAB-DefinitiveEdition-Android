@@ -305,7 +305,7 @@ class NotesSubstate extends MusicBeatSubstate
 				grpNotes.forEachAlive(function(spr:FlxSprite) {
 					spr.alpha = 0;
 				});
-				close();
+				MusicBeatState.resetState();
 			}
 			changingNote = false;
 			FlxG.sound.play(Paths.sound('cancelMenu'));
@@ -496,7 +496,7 @@ class ControlsSubstate extends MusicBeatSubstate {
 				grpOptions.forEachAlive(function(spr:Alphabet) {
 					spr.alpha = 0;
 				});
-				close();
+				MusicBeatState.resetState();
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 			}
 
@@ -873,7 +873,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 				showCharacter.alpha = 0;
 			}
 			descText.alpha = 0;
-			close();
+			MusicBeatState.resetState();
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 		}
 
