@@ -30,6 +30,8 @@ class FlashingState extends MusicBeatState
 		warnText.setFormat("Comic Sans MS Bold", 32, FlxColor.WHITE, CENTER);
 		warnText.screenCenter(Y);
 		add(warnText);
+
+                addVirtualPad(NONE, A_B);
 	}
 
 	override function update(elapsed:Float)
