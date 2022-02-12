@@ -1,6 +1,5 @@
 package;
 
-import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxColor;
 import flixel.util.FlxSave;
 import flixel.math.FlxPoint;
@@ -40,8 +39,7 @@ class CastomAndroidControls extends MusicBeatState
 
 	var config:Config;
 
-	var bg:FlxSprite;
-	var checker:FlxBackdrop;
+	public static var menuBG:FlxSprite;
 
 	override public function create():Void
 	{
@@ -50,18 +48,17 @@ class CastomAndroidControls extends MusicBeatState
 		config = new Config();
 		curSelected = config.getcontrolmode();
 
-		bg = new FlxSprite().loadGraphic(Paths.image('androidcontrols/menu/menuBG'));
-		bg.color = FlxColor.fromRGB(0,255,0);
-		add(bg);
-
-		checker = new FlxBackdrop(Paths.image('androidcontrols/menu/Checker'), 0.2, 0.2, true, true);
-		checker.scrollFactor.set(0, 0.07);
-		checker.color = FlxColor.fromRGB(0,175,0);
-		add(checker);
+		menuBG = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		menuBG.color = 0xFFea71fd;
+		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
+		menuBG.updateHitbox();
+		menuBG.screenCenter();
+		menuBG.antialiasing = ClientPrefs.globalAntialiasing;
+		add(menuBG);
 
     	        var exitbutton = new FlxButton(FlxG.width - 200, 50, "Exit", function()
     	        {
-			FlxG.switchState(new OptionsDirect());    	
+			MusicBeatState.switchState(new OptionsState()); 	
 		});
 		exitbutton.setGraphicSize(Std.int(exitbutton.width) * 3);
                 exitbutton.label.setFormat(null, 16, 0x333333, "center");
@@ -71,7 +68,7 @@ class CastomAndroidControls extends MusicBeatState
 		var savebutton = new FlxButton(exitbutton.x, exitbutton.y + 100, "Save", function()
 		{
 			save();
-			FlxG.switchState(new OptionsDirect());
+			MusicBeatState.switchState(new OptionsState()); 
 		});
 		savebutton.setGraphicSize(Std.int(savebutton.width) * 3);
                 savebutton.label.setFormat(null, 16, 0x333333, "center");
@@ -125,14 +122,9 @@ class CastomAndroidControls extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		checker.x -= -0.27;
-		checker.y -= 0.63;
-
 		updatethefuckingpozitions();
 		
-		for (touch in FlxG.touches.list){
-			arrowanimate(touch);
-			
+		for (touch in FlxG.touches.list){		
 			if(touch.overlaps(leftArrow) && touch.justPressed){
 				changeSelection(-1);
 			}else if (touch.overlaps(rightArrow) && touch.justPressed){
@@ -197,24 +189,6 @@ class CastomAndroidControls extends MusicBeatState
 				leftPozition.visible = true;
 				rightPozition.visible = true;
 			}
-	}
-
-	function arrowanimate(touch:flixel.input.touch.FlxTouch){
-		if(touch.overlaps(leftArrow) && touch.pressed){
-			leftArrow.animation.play('press');
-		}
-		
-		if(touch.overlaps(leftArrow) && touch.released){
-			leftArrow.animation.play('idle');
-		}
-		//right arrow animation
-		if(touch.overlaps(rightArrow) && touch.pressed){
-			rightArrow.animation.play('press');
-		}
-		
-		if(touch.overlaps(rightArrow) && touch.released){
-			rightArrow.animation.play('idle');
-		}
 	}
 
 	function trackbutton(touch:flixel.input.touch.FlxTouch){
