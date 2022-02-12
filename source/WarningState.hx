@@ -26,10 +26,7 @@ class WarningState extends MusicBeatState
 		bg.loadGraphic(Paths.image("dave/warning", "shared"));
 		add(bg);
 		
-		#if mobileC
-		addVirtualPad(NONE, A_B);
-		#end
-			
+		addVirtualPad(NONE, A);			
 	}
 	
 	
