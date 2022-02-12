@@ -525,14 +525,12 @@ class PlayState extends MusicBeatState
 			insanityRed.visible = false;
 			add(insanityRed);
 
-			#if windows
 			var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
 			testshader.waveAmplitude = 0.1;
 			testshader.waveFrequency = 5;
 			testshader.waveSpeed = 2;
 			insanityRed.shader = testshader.shader;
 			curbg = insanityRed;
-			#end
 
 			UsingNewCam = true;
 
@@ -593,7 +591,6 @@ class PlayState extends MusicBeatState
 					bg.active = true;
 					bg.visible = false;
 					add(bg);
-					#if windows
 					// below code assumes shaders are always enabled which is bad
 					var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
 					testshader.waveAmplitude = 0.1;
@@ -601,7 +598,6 @@ class PlayState extends MusicBeatState
 					testshader.waveSpeed = 2;
 					bg.shader = testshader.shader;
 					curbg = bg;
-					#end
 				}
 
 		case 'houseOlderDay': //Older Dave Week
@@ -635,18 +631,15 @@ class PlayState extends MusicBeatState
 				redSky.antialiasing = true;
 				redSky.scrollFactor.set(0.6, 0.6);
 				redSky.active = true;
-
 				add(redSky);
 
-				#if windows
 				// below code assumes shaders are always enabled which is bad
 				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
 				testshader.waveAmplitude = 0.1;
 				testshader.waveFrequency = 5;
 				testshader.waveSpeed = 2;
 				redSky.shader = testshader.shader;
-				curbg = redSky;
-				#end
+				curbg = redSky;	
 
 				//redPlatform.loadGraphic(Paths.image('dave/redPlatform'));
 				//redPlatform.setGraphicSize(Std.int(redPlatform.width * 0.85));
@@ -683,7 +676,6 @@ class PlayState extends MusicBeatState
 				bg.active = true;
 
 				add(bg);
-				#if windows
 				// below code assumes shaders are always enabled which is bad
 				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
 				testshader.waveAmplitude = 0.1;
@@ -691,7 +683,6 @@ class PlayState extends MusicBeatState
 				testshader.waveSpeed = 2;
 				bg.shader = testshader.shader;
 				curbg = bg;
-				#end
 
 				UsingNewCam = true;
 			}
@@ -707,7 +698,6 @@ class PlayState extends MusicBeatState
 				bg.active = true;
 
 				add(bg);
-				#if windows
 				// below code assumes shaders are always enabled which is bad
 				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
 				testshader.waveAmplitude = 0.1;
@@ -715,7 +705,6 @@ class PlayState extends MusicBeatState
 				testshader.waveSpeed = 2;
 				bg.shader = testshader.shader;
 				curbg = bg;
-				#end
 
 				UsingNewCam = true;
 			}
@@ -730,7 +719,6 @@ class PlayState extends MusicBeatState
 				bg.active = true;
 	
 				add(bg);
-				#if windows
 				// below code assumes shaders are always enabled which is bad
 				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
 				testshader.waveAmplitude = 0.1;
@@ -738,7 +726,6 @@ class PlayState extends MusicBeatState
 				testshader.waveSpeed = 2;
 				bg.shader = testshader.shader;
 				curbg = bg;
-				#end
 
 				var pcFloor:BGSprite = new BGSprite('bambi/purgatory/bombuboi/pcfront', -650, 600, 0.9, 0.9);
 				pcFloor.setGraphicSize(Std.int(pcFloor.width * 1.1));
@@ -768,17 +755,6 @@ class PlayState extends MusicBeatState
 				bgshit2.setGraphicSize(Std.int(bgshit2.width * 1.2));
 				bgshit2.updateHitbox();
 				add(bgshit2);
-
-				/*add(bg);
-				#if windows
-				// below code assumes shaders are always enabled which is bad
-				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
-				testshader.waveAmplitude = 0.1;
-				testshader.waveFrequency = 5;
-				testshader.waveSpeed = 2;
-				bg.shader = testshader.shader;
-				curbg = bg;
-				#end*/
 			}
 
 		case '3dScary':
@@ -791,7 +767,6 @@ class PlayState extends MusicBeatState
 				bg.active = true;
 
 				add(bg);
-				#if windows
 				// below code assumes shaders are always enabled which is bad
 				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
 				testshader.waveAmplitude = 0.1;
@@ -799,7 +774,6 @@ class PlayState extends MusicBeatState
 				testshader.waveSpeed = 2;
 				bg.shader = testshader.shader;
 				curbg = bg;
-				#end
 
 				//var scaryPlatform:FlxSprite = new FlxSprite(-275, 750).loadGraphic(Paths.image('dave/scaryPlatform'));
 				//scaryPlatform.setGraphicSize(Std.int(scaryPlatform.width * 0.85));
@@ -822,7 +796,6 @@ class PlayState extends MusicBeatState
 				bg.active = true;
 				add(bg);
 				
-				#if windows
 				// below code assumes shaders are always enabled which is bad
 				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
 				testshader.waveAmplitude = 0.1;
@@ -830,7 +803,6 @@ class PlayState extends MusicBeatState
 				testshader.waveSpeed = 2;
 				bg.shader = testshader.shader;
 				curbg = bg;
-				#end
 			}
 
 		case 'farmDay':
@@ -1350,7 +1322,7 @@ class PlayState extends MusicBeatState
 			luaFile = Paths.modFolders(luaFile);
 			doPush = true;
 		} else {
-			luaFile = Paths.getPreloadPath(luaFile);
+			luaFile = SUtil.getPath() + Paths.getPreloadPath(luaFile);
 			if(FileSystem.exists(luaFile)) {
 				doPush = true;
 			}
@@ -1390,7 +1362,7 @@ class PlayState extends MusicBeatState
 		blammedLightsBlack.alpha = 0.0;
 		#end
 
-		#if windows
+                #if windows
 		screenshader.waveAmplitude = 1;
         screenshader.waveFrequency = 2;
         screenshader.waveSpeed = 1;
@@ -1747,7 +1719,7 @@ class PlayState extends MusicBeatState
 			luaFile = Paths.modFolders(luaFile);
 			doPush = true;
 		} else {
-			luaFile = Paths.getPreloadPath(luaFile);
+			luaFile = SUtil.getPath() + Paths.getPreloadPath(luaFile);
 			if(FileSystem.exists(luaFile)) {
 				doPush = true;
 			}
@@ -2371,7 +2343,7 @@ class PlayState extends MusicBeatState
 		var daBeats:Int = 0; // Not exactly representative of 'daBeats' lol, just how much it has looped
 
 		var songName:String = Paths.formatToSongPath(SONG.song);
-		var file:String = Paths.json(songName + '/events');
+		var file:String = SUtil.getPath() + Paths.json(songName + '/events');
 		#if sys
 		if (FileSystem.exists(Paths.modsJson(songName + '/events')) || FileSystem.exists(file)) {
 		#else
