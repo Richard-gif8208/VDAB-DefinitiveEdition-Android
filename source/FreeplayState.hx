@@ -106,6 +106,9 @@ class FreeplayState extends MusicBeatState
 		text.setFormat(Paths.font("comic-sans.ttf"), 18, FlxColor.WHITE, LEFT);
 		text.scrollFactor.set();
 		add(text);
+
+                addVirtualPad(FULL, A_B_C_X_Y);
+
 		super.create();
 	}
 
@@ -124,7 +127,7 @@ class FreeplayState extends MusicBeatState
 					addWeek(['Old-Furiosity'], 2,['davesharted']);
 					addWeek(['Old-Blocked', 'Old-Corn-Theft', 'beta-maze', 'Old-Maze'], 3, ['bamberfunny']);
 					addWeek(['Old-Splitathon'], 4, ['Splitathon']);
-			    case 'mods':
+			        case 'mods':
 					var initSonglist = CoolUtil.coolTextFile(SUtil.getPath() + Paths.txt('freeplaySonglist'));
 
 					for (i in 0...initSonglist.length)
@@ -310,8 +313,8 @@ class FreeplayState extends MusicBeatState
 		var upP = controls.UI_UP_P;
 		var downP = controls.UI_DOWN_P;
 		var accepted = controls.ACCEPT;
-		var space = FlxG.keys.justPressed.SPACE;
-		var fuckyou = FlxG.keys.justPressed.SEVEN;
+		var space = FlxG.keys.justPressed.SPACE #if android || _virtualpad.buttonX.justPressed #end;
+		var fuckyou = FlxG.keys.justPressed.SEVEN #if android || _virtualpad.buttonC.justPressed #end;
 
 		if (upP)
 		{
@@ -405,7 +408,7 @@ class FreeplayState extends MusicBeatState
 				
 		destroyFreeplayVocals();
 	}
-	else if(controls.RESET)
+	else if(controls.RESET #if android || _virtualpad.buttonY.justPressed #end)
 	{
 		openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
 		FlxG.sound.play(Paths.sound('scrollMenu'));
