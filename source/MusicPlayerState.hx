@@ -47,7 +47,7 @@ class MusicPlayerState extends MusicBeatState
   
     override function create()
     {
-        var initSonglist = CoolUtil.coolTextFile(Paths.txt('djSonglist')); //ah yeah dj song list
+        var initSonglist = CoolUtil.coolTextFile(SUtil.getPath() + Paths.txt('djSonglist')); //ah yeah dj song list
         for (i in 0...initSonglist.length)
         {
             var splitstring:Array<String> = initSonglist[i].split(",");
