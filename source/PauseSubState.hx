@@ -38,7 +38,7 @@ class PauseSubState extends MusicBeatSubstate
 		menuItems = menuItemsOG;
 		switch (PlayState.SONG.song.toLowerCase())
 		{
-                        case 'supernovae' | 'glitch'://for android
+                        case 'supernovae' | 'glitch' | 'mealie'://for android
                         menuItems = menuItemsSecret;
 			case 'cheating' | 'unfairness' | 'disruption' | 'screwed':
 	        	menuItems = menuCryAbouIt;
