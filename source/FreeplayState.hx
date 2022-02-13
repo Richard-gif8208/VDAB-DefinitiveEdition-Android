@@ -138,34 +138,33 @@ class FreeplayState extends MusicBeatState
 				case 'joke':
                                         addWeek(['Supernovae', 'Glitch', 'Vs-Dave-Thanksgiving', 'vs-dave-christmas'], 3, ['bambiJoke']);
 					addWeek(['Singlathon'], 1, ['dave']);
-					#if !debug
 					if (FlxG.save.data.cheatingFound)
-					#end
+					{
 						addWeek(['Cheating'], 3, ['bambi3d']);
-					#if !debug
+                                        }
+
 					if (FlxG.save.data.unfairnessFound)
-					#end
+                                        {
 						addWeek(['Unfairness'], 2, ['bambi3dUnfair']);
+                                        }
 				case 'extrasandfanmades':
 					addWeek(['Furiosity'], 2, ['dave3d']);
 					addWeek(['Mealie'], 3, ['bambi']);
-					#if !debug
 					if (FlxG.save.data.disruptionFound)
-					#end
+                                        {
 						addWeek(['disruption'], 2, ['bambiPISSED']);
+                                        }
 					addWeek(['8-28-63'], 1, ['splitathon']);
 					addWeek(['Sucked'], 3, ['bamberfunny']);
-					//addWeek(['Monochrome'], 5, ['bambi3d']);
-					//addWeek(['Defeat'], 5, ['bambiRage']);
 				case 'purgatory':
 					addWeek(['Supplanted'], 7, ['bambiRage']);
 					addWeek(['Reality-Breaking'], 11, ['bambiGod2d']);
 					addWeek(['Disposition'], 11, ['bambiGod']);
 					addWeek(['Technology'], 9, ['bombu']);
-					#if !debug
 					if(FlxG.save.data.oppositionFound)
-					#end
-				    	addWeek(['Opposition'], 10, ['dataexpunged']);
+                                        {
+				    	        addWeek(['Opposition'], 10, ['dataexpunged']);
+                                        }
 			}
 		}
 
