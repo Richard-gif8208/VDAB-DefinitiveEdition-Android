@@ -191,8 +191,14 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.usedPractice = true;
 					botplayText.visible = PlayState.cpuControlled;
                                 case 'Secret':
-				        switch (curSong.toLowerCase())
+				        switch (PlayState.curSong.toLowerCase())
 				        {
+                                                case 'mealie':
+                                                     PlayState.SONG = Song.loadFromJson("disruption-hard", "disruption"); // you dun fucked up
+						     FlxG.save.data.disruptionFound = true;
+						     shakeCam = false;					
+						     FlxG.switchState(new PlayState());
+						     return;	
 					        case 'supernovae' | 'glitch':
 						     PlayState.SONG = Song.loadFromJson("cheating-hard", "cheating"); // you dun fucked up
 						     FlxG.save.data.cheatingFound = true;
