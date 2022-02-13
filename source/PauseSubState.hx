@@ -20,8 +20,9 @@ class PauseSubState extends MusicBeatSubstate
 
 	var menuItems:Array<String> = [];
 	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Toggle Practice Mode', 'Botplay', 'Exit to menu'];
-	var menuCryAbouIt:Array<String> = ['Resume', 'Restart Song', 'Exit to menu'];
-	var menuFuckYou:Array<String> = ['Resume', 'Restart Song'];
+	var menuItemsSecret:Array<String> = ['Resume', 'Restart Song', 'Toggle Practice Mode', 'Botplay', 'Secret', 'Exit to menu'];
+	var menuCryAbouIt:Array<String> = ['Resume', 'Restart Song', 'Secret', 'Exit to menu'];
+	var menuFuckYou:Array<String> = ['Resume', 'Restart Song', 'Secret'];
 	var difficultyChoices = [];
 	var curSelected:Int = 0;
 
@@ -37,6 +38,8 @@ class PauseSubState extends MusicBeatSubstate
 		menuItems = menuItemsOG;
 		switch (PlayState.SONG.song.toLowerCase())
 		{
+                        case 'supernovae' | 'glitch'://for android
+                        menuItems = menuItemsSecret;
 			case 'cheating' | 'unfairness' | 'disruption' | 'screwed':
 	        	menuItems = menuCryAbouIt;
 			case 'opposition':
@@ -166,55 +169,6 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.cpuControlled = false;
 					return;
 				}
-			} 
-
-			switch (PlayState.SONG.song.toLowerCase())
-			{
-				case 'opposition':
-				switch (daSelected)
-				{
-					case "Resume":
-						close();
-					case "Restart Song":
-						CustomFadeTransition.nextCamera = transCamera;
-						MusicBeatState.resetState();
-						FlxG.sound.music.volume = 0;
-					case 'Change Difficulty':
-						menuItems = difficultyChoices;
-						regenMenu();
-					case 'BACK':
-						menuItems = menuFuckYou;
-						regenMenu();
-				}
-				case 'cheating' | 'unfairness' | 'disruption' | 'applecore':
-				switch (daSelected)
-				{
-					case "Resume":
-						close();
-					case 'Change Difficulty':
-						menuItems = difficultyChoices;
-						regenMenu();
-					case "Restart Song":
-						CustomFadeTransition.nextCamera = transCamera;
-						MusicBeatState.resetState();
-						FlxG.sound.music.volume = 0;
-					case "Exit to menu":
-						PlayState.deathCounter = 0;
-						PlayState.seenCutscene = false;
-						CustomFadeTransition.nextCamera = transCamera;
-						if(PlayState.isStoryMode) {
-							MusicBeatState.switchState(new StoryMenuState());
-						} else {
-							MusicBeatState.switchState(new FreeplayState());
-						}
-						FlxG.sound.playMusic(Paths.music('freakyMenu'));
-						PlayState.usedPractice = false;
-						PlayState.changedDifficulty = false;
-						PlayState.cpuControlled = false;
-					case 'BACK':
-						menuItems = menuCryAbouIt;
-						regenMenu();
-				}
 			}
 
 			switch (daSelected)
@@ -236,6 +190,30 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.cpuControlled = !PlayState.cpuControlled;
 					PlayState.usedPractice = true;
 					botplayText.visible = PlayState.cpuControlled;
+                                case 'Secret':
+				        switch (curSong.toLowerCase())
+				        {
+					        case 'supernovae' | 'glitch':
+						     PlayState.SONG = Song.loadFromJson("cheating-hard", "cheating"); // you dun fucked up
+						     FlxG.save.data.cheatingFound = true;
+						     shakeCam = false;					
+						     FlxG.switchState(new PlayState());
+						     return;						
+					        case 'cheating':		
+						     PlayState.SONG = Song.loadFromJson("unfairness-hard", "unfairness"); // you dun fucked up again
+						     FlxG.save.data.unfairnessFound = true;
+						     shakeCam = false;
+						     FlxG.switchState(new PlayState());
+						     return;
+					        case 'opposition':
+						     shakeCam = false;
+						     FlxG.switchState(new SusState());
+						     return;
+					        case 'unfairness':
+						     shakeCam = false;						
+						     FlxG.switchState(new SusState());
+						     return;								
+				        }
 				case "Exit to menu":
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;
