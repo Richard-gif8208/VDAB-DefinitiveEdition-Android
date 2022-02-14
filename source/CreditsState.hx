@@ -25,7 +25,7 @@ class CreditsState extends MusicBeatState
 
 	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color, yourmother
                 ['Android Port'],
-		['Saw (M.A. Jigsaw)','majigsaw','Main Coder','https://www.youtube.com/channel/UC2Sk7vtPzOvbVzdVTWrribQ','0xFFFF0000'],
+		['Saw (M.A. Jigsaw)','majigsaw','Main Coder','https://www.youtube.com/channel/UC2Sk7vtPzOvbVzdVTWrribQ','0xFFF73838'],
 		['Dave & Bambi Original Mod'],
 		['Check it out by pressing enter!',		    'daveandbamber',			'Support the Original Mod!',			                            'https://gamebanana.com/mods/43201',	    0xFF613BE0],
 		[''],
